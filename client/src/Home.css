@@ -1,0 +1,13 @@
+body{height: 200vh;}
+
+.home{
+    height: 85vh;
+    background-image: url("./images/homepagev2.png") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.row{
+    width: 100%;
+}
