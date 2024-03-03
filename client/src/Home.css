@@ -12,6 +12,8 @@ body{height: 200vh;}
 
 .home-name{
     color: white;
+    padding-left: 11%;
+    padding-top: 100px;
 }
 
 .row-home{
