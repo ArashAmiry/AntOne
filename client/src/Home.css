@@ -9,3 +9,11 @@ body{height: 200vh;}
     background-attachment: fixed;
     padding: 0px !important;
 }
+
+.home-name{
+    color: white;
+}
+
+.row-home{
+    margin: 0px;
+}
