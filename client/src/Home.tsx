@@ -3,10 +3,10 @@ import './Home.css';
 
 function Home(){
     return(
-        <Container fluid>
+        <Container fluid className='px-0 home-image'>
             <Row className='row'>
-                <Col md={12} className="home" style={{backgroundImage: `url("./images/homepagev2.png")`, backgroundSize: "cover"}}>
-
+                <Col md={12} className="home">
+                    <h1>YUNG LEAN</h1>
                 </Col>
             </Row>
         </Container>

@@ -8,10 +8,6 @@ header {
     font-family: "Inter", sans-serif;
 }
 
-.row {
-    width: 100%;
-}
-
 a, .nav-item {
     color: black;
     text-decoration: none !important;
@@ -19,4 +15,4 @@ a, .nav-item {
 
 .search{
     padding-left: 0px !important;
-}
+} 

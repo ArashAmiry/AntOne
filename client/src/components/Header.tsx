@@ -6,9 +6,8 @@ function Header() {
     return (
         <Container fluid className="px-0 py-5 container-nav">
             <header>
-                <Navbar>
-                    <Row className="row">
-                        <Col md={4}>
+                <Row>
+                <Col md={4}>
                             <h1><strong>ANT ONE</strong></h1>
                         </Col>
 
@@ -31,8 +30,7 @@ function Header() {
                         <Col md={3} className="py-md-3">
                             <NavLink to={"/"}><h4 className="nav-item">MINA MIXAR</h4></NavLink>
                         </Col>
-                    </Row>
-                </Navbar>
+                </Row>
             </header>
         </Container>
     )

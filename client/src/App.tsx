@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -10,11 +8,9 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <div className="content">
-          <Routes>
+          {/* <Routes>
             <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
+          </Routes> */}
       </div>
     </Router>
   );
