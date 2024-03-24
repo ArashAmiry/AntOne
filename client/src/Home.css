@@ -2,51 +2,15 @@ body {
     height: 200vh;
 }
 
-
 .home-image {
     height: 85vh;
-    background-image: url("./images/homepagev2.png") !important;
-    background-size: cover !important;
+    background-image: url("./images/homepagev2.png");
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 0px !important;
+    padding: 0px;
 }
 
-.home-name {
-    color: white;
-    padding-left: 11%;
-    padding-top: 100px;
-}
-
-.row-home,
-.music-player {
-    margin: 0px;
-}
-
-.music-player {
-    position: absolute;
-    top: 85%;
-    padding-left: 11%;
-}
-
-.music-player h2 {
-    color: white;
-}
-
-.button {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-}
-
-.button > h2 {
-    width: 100px;
-    height: 100px;
-    line-height: 90px;
-    border-radius: 50%;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: white;
-    border-style: solid;
-    border-width: 1px;
+.seperator-container {
+    width: 60vw;
 }

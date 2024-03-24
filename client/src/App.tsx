@@ -6,12 +6,10 @@ import Home from './Home';
 function App() {
   return (
     <Router>
-      <div className="App">
         <Header />
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes> 
-      </div>
     </Router>
   );
 }

@@ -1,4 +1,4 @@
-import { Col, Container, Form, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import './Header.css';
 import { NavLink } from "react-router-dom";
 
@@ -7,11 +7,11 @@ function Header() {
         <Container fluid className="px-0 py-5 container-nav">
             <header>
                 <Row className="row-nav">
-                    <Col md={4}>
+                    <Col md={3}>
                         <h1><strong>ANT ONE</strong></h1>
                     </Col>
 
-                    <Col md={4} className="py-md-2">
+                    <Col md={5} className="py-md-2">
                         <Form>
                             <Form.Group>
                                 <Form.Control

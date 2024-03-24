@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend&display=swap');
+
+h2 {
+    font-family: "Inter", sans-serif;
+}
+
+.file-importer {
+    background-color: #F0F0F3;
+    box-shadow: -10px -10px 10px #FFFFFF70, /* 70% opacity white shadow */
+               10px 10px 10px #AEAEC020; /* 20% opacity #AEAEC0 shadow */
+    border-radius: 10px;
+}
+
+.progress-import {
+    width: 100%;
+}
