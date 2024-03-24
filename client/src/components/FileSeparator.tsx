@@ -19,7 +19,7 @@ function MusicInput() {
       setMsg("Uploading...");
       setProgress((prevState) => { return { ...prevState, started: true } });
 
-      axios.post('http://httpbin.org/post', formData, {
+      axios.post('http://127.0.0.1:5000/separation', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -31,7 +31,7 @@ function MusicInput() {
         },
       })
         .then(response => {
-          setMsg("Upload successful!");
+          setMsg("Upload successful!" + response.data);
         })
         .catch(error => {
           setMsg("Upload failed");

@@ -1,10 +1,11 @@
 import os
 
 from flask import Flask, request
+from flask_cors import CORS
 import demucs.separate
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/separation', methods=['POST'])
 def separateToTwoStems():  # put application's code here
@@ -15,17 +16,18 @@ def separateToTwoStems():  # put application's code here
     if file.filename == '':
         return 'No selected file', 400
     if file:
-        filename = "stuuuuurdy"
+        filename = file.filename
         filepath = os.path.join('C:\\Users\\Arash\\Desktop', filename)
         file.save(filepath)
 
         try:
-            demucs.separate.main(["--mp3", "--two-stems", "vocals", "track with space.mp3"])
+            print(filename)
+            demucs.separate.main(["--mp3", "--two-stems", "vocals", "C:\\Users\\Arash\\Desktop\\" + filename])
             return 'File uploaded and processed', 200
         except Exception as e:
             return str(e), 500
 
-    return 'Hello World!'
+    return 'Unsuccessfully finished.'
 
 
 if __name__ == '__main__':
