@@ -22,7 +22,6 @@ function MusicInput() {
       formData.append('file', selectedFile);
 
       setIsAudioProcessed(false);
-      setMsg("Uploading...");
       setProgress((prevState) => { return { ...prevState, started: true } });
 
       axios.post('http://127.0.0.1:5000/separation', formData, {
@@ -42,14 +41,14 @@ function MusicInput() {
           const audioUrl = URL.createObjectURL(audioBlob);
           setDownloadVocalUrl(audioUrl);
           setIsAudioProcessed(true);
-          setMsg("Upload successful!");
+          setMsg("");
         })
         .catch(error => {
-          setMsg("Upload failed");
+          setMsg("Försök igen");
           console.log("error:", error);
         })
     } else {
-      setMsg("No file selected");
+      setMsg("");
       return;
     }
   }
@@ -65,11 +64,14 @@ function MusicInput() {
         </Row>
         <Row>
           <Col md={12} className="d-flex align-items-center justify-content-center ">
-            <ProgressBar animated now={progress.pc} className="progress-import" />
+            <ProgressBar animated={!isAudioProcessed} now={progress.pc} className="progress-import" />
+          </Col>
+          <Col>
+            {msg && <p>{msg}</p>}
           </Col>
         </Row>
       </Row>
-      {msg && <span>{msg}</span>}
+
 
       {isAudioProcessed &&
         <Row className="my-4 justify-content-between">

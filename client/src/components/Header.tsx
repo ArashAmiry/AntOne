@@ -10,7 +10,6 @@ function Header() {
                     <Col md={3}>
                         <h1><strong>ANT ONE</strong></h1>
                     </Col>
-
                     <Col md={5} className="py-md-2">
                         <Form>
                             <Form.Group>
