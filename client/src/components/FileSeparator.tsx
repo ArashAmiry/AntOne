@@ -7,7 +7,10 @@ import "./FileSeparator.css";
 
 function MusicInput() {
   const [progress, setProgress] = useState({ started: false, pc: 0 });
+  const [downloadVocalUrl, setDownloadVocalUrl] = useState('');
   const [msg, setMsg] = useState("");
+  const imageVocalpath = require("../images/voice.jpg")
+  const imageBeatPath = require("../images/drums.png")
 
   function handleUpload(e: any) {
     const selectedFile = e.target.files[0];
@@ -29,16 +32,12 @@ function MusicInput() {
             setProgress(prevState => ({ ...prevState, pc: percentCompleted }));
           }
         },
-        responseType: 'blob' // This tells axios to expect a binary response
+        responseType: 'blob'
       })
         .then(response => {
-          // play the music i got back
           const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
           const audioUrl = URL.createObjectURL(audioBlob);
-
-          // Create a new audio element and play the file
-          const audioElement = new Audio(audioUrl);
-          audioElement.play();
+          setDownloadVocalUrl(audioUrl);
           setMsg("Upload successful!");
         })
         .catch(error => {
@@ -53,7 +52,6 @@ function MusicInput() {
 
   return (
     <>
-
       <Row className="file-importer py-4 px-5 mt-5">
         <h3><strong>SEPARERA MUSIK</strong></h3>
         <Row className="my-4">
@@ -68,6 +66,39 @@ function MusicInput() {
         </Row>
       </Row>
       {msg && <span>{msg}</span>}
+
+      {progress.pc === 100 &&
+        <Row className="my-4 justify-content-between">
+          <Col md={6} className="download-vocal text-center">
+            <a href={downloadVocalUrl} download={"Felix.mp3"}>
+              <Row>
+                <Col md={12} className="py-5">
+                  <img className="vocal" src={imageVocalpath} alt="Microphone" />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12} className="pb-4 vocal-download-text">
+                  <h4><strong>LADDA NED VOCALS</strong></h4>
+                </Col>
+              </Row>
+            </a>
+          </Col>
+          <Col md={6} className="download-beat text-center">
+            <a href={downloadVocalUrl} download={"vocal.mp3"}>
+              <Row>
+                <Col md={12} className="py-5">
+                  <img className="vocal" src={imageBeatPath} alt="Microphone" />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12} className="pb-4 vocal-download-text">
+                  <h4><strong>LADDA NED BEAT</strong></h4>
+                </Col>
+              </Row>
+            </a>
+          </Col>
+        </Row>
+      }
     </>
   );
 }
