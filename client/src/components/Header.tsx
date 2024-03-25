@@ -17,7 +17,7 @@ function Header() {
                                 <Form.Control
                                     className="search-bar mx-auto"
                                     type="search"
-                                    placeholder="Ange mix"
+                                    placeholder="Ange mix..."
                                 />
                             </Form.Group>
                         </Form>

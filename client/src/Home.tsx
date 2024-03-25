@@ -7,7 +7,8 @@ function Home() {
         <>
             <Container fluid className='px-0 home-image'></Container>
             <Container className='seperator-container'>
-                <MusicInput></MusicInput>
+                <MusicInput/>
+                
             </Container>
         </>
     )

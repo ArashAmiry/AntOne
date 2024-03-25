@@ -31,7 +31,8 @@ function MusicInput() {
         },
       })
         .then(response => {
-          setMsg("Upload successful!" + response.data);
+          console.log(response.data)
+          setMsg("Upload successful!");
         })
         .catch(error => {
           setMsg("Upload failed");
