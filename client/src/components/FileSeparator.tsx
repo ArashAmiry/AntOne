@@ -8,17 +8,20 @@ import "./FileSeparator.css";
 function MusicInput() {
   const [progress, setProgress] = useState({ started: false, pc: 0 });
   const [downloadVocalUrl, setDownloadVocalUrl] = useState('');
+  const [isAudioProcessed, setIsAudioProcessed] = useState(false);
   const [msg, setMsg] = useState("");
   const imageVocalpath = require("../images/voice.jpg")
   const imageBeatPath = require("../images/drums.png")
 
   function handleUpload(e: any) {
     const selectedFile = e.target.files[0];
+    setProgress((prevState) => { return { ...prevState, started: false, pc: 0 } });
 
     if (selectedFile) {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
+      setIsAudioProcessed(false);
       setMsg("Uploading...");
       setProgress((prevState) => { return { ...prevState, started: true } });
 
@@ -38,6 +41,7 @@ function MusicInput() {
           const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
           const audioUrl = URL.createObjectURL(audioBlob);
           setDownloadVocalUrl(audioUrl);
+          setIsAudioProcessed(true);
           setMsg("Upload successful!");
         })
         .catch(error => {
@@ -67,7 +71,7 @@ function MusicInput() {
       </Row>
       {msg && <span>{msg}</span>}
 
-      {progress.pc === 100 &&
+      {isAudioProcessed &&
         <Row className="my-4 justify-content-between">
           <Col md={6} className="download-vocal text-center">
             <a href={downloadVocalUrl} download={"Felix.mp3"}>
