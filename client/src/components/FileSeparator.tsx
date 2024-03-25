@@ -29,9 +29,16 @@ function MusicInput() {
             setProgress(prevState => ({ ...prevState, pc: percentCompleted }));
           }
         },
+        responseType: 'blob' // This tells axios to expect a binary response
       })
         .then(response => {
-          console.log(response.data)
+          // play the music i got back
+          const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
+          const audioUrl = URL.createObjectURL(audioBlob);
+
+          // Create a new audio element and play the file
+          const audioElement = new Audio(audioUrl);
+          audioElement.play();
           setMsg("Upload successful!");
         })
         .catch(error => {
