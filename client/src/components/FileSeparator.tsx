@@ -4,10 +4,12 @@ import ProgressBar from "react-bootstrap/esm/ProgressBar";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import "./FileSeparator.css";
+import JSZip from "jszip";
 
 function MusicInput() {
   const [progress, setProgress] = useState({ started: false, pc: 0 });
   const [downloadVocalUrl, setDownloadVocalUrl] = useState('');
+  const [downloadInstrumentalUrl, setDownloadInstrumentalUrl] = useState('');
   const [isAudioProcessed, setIsAudioProcessed] = useState(false);
   const [msg, setMsg] = useState("");
   const imageVocalpath = require("../images/voice.jpg")
@@ -37,12 +39,55 @@ function MusicInput() {
         responseType: 'blob'
       })
         .then(response => {
-          const audioBlob = new Blob([response.data], { type: 'audio/mpeg' });
-          const audioUrl = URL.createObjectURL(audioBlob);
-          setDownloadVocalUrl(audioUrl);
+          const zipBlob = response.data;
+
+          // Use JSZip to read the zipped content
+          JSZip.loadAsync(zipBlob).then(zip => {
+            // zip is an object with the zipped files
+            let audioFiles = Object.keys(zip.files).filter(fileName => fileName.endsWith('.mp3') || fileName.endsWith('.wav'));
+
+            audioFiles.forEach((fileName, index) => {
+              zip.files[fileName].async('blob').then(audioBlob => {
+                // Create blob URLs for the audio files
+                const audioUrl = URL.createObjectURL(audioBlob);
+
+                if (index === 0) {
+                  setDownloadVocalUrl(audioUrl); // For the first audio file
+                } else if (index === 1) {
+                  setDownloadInstrumentalUrl(audioUrl); // For the second audio file
+                }
+              });
+            });
+          });
+
           setIsAudioProcessed(true);
-          setMsg("");
+          return;
         })
+        // .then(zip => {
+
+        //   if (!zip === null) {
+        //     throw new Error("Failed to loag zip content");
+        //   } else {
+        //     // Extract both the vocals.mp3 and beat.mp3 files
+        //     const vocalsPromise = zip.file("vocals.mp3").async("blob");
+        //     const beatPromise = zip!.file("beat.mp3").async("blob");
+        //     return Promise.all([vocalsPromise, beatPromise]);
+        //   }
+
+        // })
+        // .then(([vocalsBlob, beatBlob]) => {
+        //   // Create object URLs for both the extracted blobs
+        //   const vocalsUrl = URL.createObjectURL(vocalsBlob);
+        //   const instrumentalUrl = URL.createObjectURL(beatBlob);
+
+        //   // Do something with the URLs (e.g., set state to update the UI)
+        //   setDownloadVocalUrl(vocalsUrl);
+        //   // Assume you have a similar function for the beat URL
+        //   setDownloadInstrumentalUrl(instrumentalUrl);
+
+        //   setIsAudioProcessed(true);
+        //   setMsg("");
+        // })
         .catch(error => {
           setMsg("Försök igen");
           console.log("error:", error);
@@ -76,7 +121,7 @@ function MusicInput() {
       {isAudioProcessed &&
         <Row className="my-4 justify-content-between">
           <Col md={6} className="download-vocal text-center">
-            <a href={downloadVocalUrl} download={"Felix.mp3"}>
+            <a href={downloadVocalUrl} download={"vocals.mp3"}>
               <Row>
                 <Col md={12} className="py-5">
                   <img className="vocal" src={imageVocalpath} alt="Microphone" />
@@ -84,13 +129,13 @@ function MusicInput() {
               </Row>
               <Row>
                 <Col md={12} className="pb-4 vocal-download-text">
-                  <h4><strong>LADDA NED VOCALS</strong></h4>
+                  <h4><strong>LADDA NER VOCALS</strong></h4>
                 </Col>
               </Row>
             </a>
           </Col>
           <Col md={6} className="download-beat text-center">
-            <a href={downloadVocalUrl} download={"vocal.mp3"}>
+            <a href={downloadInstrumentalUrl} download={"instrumental.mp3"}>
               <Row>
                 <Col md={12} className="py-5">
                   <img className="vocal" src={imageBeatPath} alt="Microphone" />
@@ -98,7 +143,7 @@ function MusicInput() {
               </Row>
               <Row>
                 <Col md={12} className="pb-4 vocal-download-text">
-                  <h4><strong>LADDA NED BEAT</strong></h4>
+                  <h4><strong>LADDA NER INSTRUMENTAL</strong></h4>
                 </Col>
               </Row>
             </a>
