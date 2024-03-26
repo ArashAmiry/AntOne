@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend&display=swap');
+
+.footer{
+    margin-top: 80px;
+    border-top: 1px solid rgb(207, 207, 207);
+    padding-top: 50px;
+    font-family: "Inter", sans-serif;
+    padding-bottom: 150px;
+}
+
+.footer-container{
+    width: 60vw;
+}

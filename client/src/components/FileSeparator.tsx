@@ -63,31 +63,6 @@ function MusicInput() {
           setIsAudioProcessed(true);
           return;
         })
-        // .then(zip => {
-
-        //   if (!zip === null) {
-        //     throw new Error("Failed to loag zip content");
-        //   } else {
-        //     // Extract both the vocals.mp3 and beat.mp3 files
-        //     const vocalsPromise = zip.file("vocals.mp3").async("blob");
-        //     const beatPromise = zip!.file("beat.mp3").async("blob");
-        //     return Promise.all([vocalsPromise, beatPromise]);
-        //   }
-
-        // })
-        // .then(([vocalsBlob, beatBlob]) => {
-        //   // Create object URLs for both the extracted blobs
-        //   const vocalsUrl = URL.createObjectURL(vocalsBlob);
-        //   const instrumentalUrl = URL.createObjectURL(beatBlob);
-
-        //   // Do something with the URLs (e.g., set state to update the UI)
-        //   setDownloadVocalUrl(vocalsUrl);
-        //   // Assume you have a similar function for the beat URL
-        //   setDownloadInstrumentalUrl(instrumentalUrl);
-
-        //   setIsAudioProcessed(true);
-        //   setMsg("");
-        // })
         .catch(error => {
           setMsg("Försök igen");
           console.log("error:", error);
