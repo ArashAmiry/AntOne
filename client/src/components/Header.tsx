@@ -10,14 +10,13 @@ function Header() {
                     <Col md={3}>
                         <h1><strong>ANT ONE</strong></h1>
                     </Col>
-
                     <Col md={5} className="py-md-2">
                         <Form>
                             <Form.Group>
                                 <Form.Control
                                     className="search-bar mx-auto"
                                     type="search"
-                                    placeholder="Ange mix"
+                                    placeholder="Ange mix..."
                                 />
                             </Form.Group>
                         </Form>
