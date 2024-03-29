@@ -6,7 +6,7 @@ import Col from "react-bootstrap/esm/Col";
 import "./FileSeparator.css";
 import JSZip from "jszip";
 
-function MusicInput() {
+function FileSeparator() {
   const [progress, setProgress] = useState({ started: false, pc: 0 });
   const [downloadVocalUrl, setDownloadVocalUrl] = useState('');
   const [downloadInstrumentalUrl, setDownloadInstrumentalUrl] = useState('');
@@ -129,4 +129,4 @@ function MusicInput() {
   );
 }
 
-export default MusicInput;
+export default FileSeparator;

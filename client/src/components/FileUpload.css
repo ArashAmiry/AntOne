@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend&display=swap');
+
+.upload{
+    height: 250px;
+    background-color: #F0F0F3;
+    box-shadow: -10px -10px 10px #FFFFFF70,
+        10px 10px 10px #AEAEC020;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif; font-family: "Inter", sans-serif;
+    color: rgb(94, 94, 94);
+}

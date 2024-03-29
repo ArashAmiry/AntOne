@@ -10,6 +10,7 @@
     "@types/node": "^16.18.86",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@types/react-dropzone": "^5.1.0",
     "adm-zip": "^0.5.12",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
