@@ -9,11 +9,13 @@ const FileUpload = () => {
             setUploadedFiles(acceptedFiles);
         },
     });
-    //TO DO : Customize and Style this Drag and Drop to Upload box as you want🧑‍💻😊
+    //TO DO : Customize and Style this Drag and Drop to Upload box as you want🧑‍💻😊 <MdAudioFile />
     return (
-        <div {...getRootProps()} className='upload d-flex align-items-center justify-content-center'>
+        <div {...getRootProps()} className='upload d-flex flex-column align-items-center justify-content-center'>
             <input {...getInputProps()} />
-            <p>Drag and drop files here or click to browse <FaCloudUploadAlt size={20} /></p> 
+            <p>Drag and drop files here or click to browse</p> 
+            <p><FaCloudUploadAlt size={70} /></p>
+
         </div>
     );
 };
