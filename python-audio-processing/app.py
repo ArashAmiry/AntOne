@@ -17,17 +17,19 @@ def separateToTwoStems():  # put application's code here
     if file.filename == '':
         return 'No selected file', 400
     if file:
-        separatedDirectory = "C:\\GitRepos\\AntOne\\python-audio-processing\\separated\\htdemucs\\"
-        nonSeparatedDirectory = ".\\non-seperated\\"
+        separatedDirectory = os.path.join(".", "separated", "htdemucs")
+        nonSeparatedDirectory = os.path.join(".", "non-seperated")
         filename = file.filename
-        separatedDirectory += os.path.splitext(filename)[0]
+        song_folder = os.path.splitext(filename)[0]
+        full_separated_path = os.path.join(separatedDirectory, song_folder)
         filepath = os.path.join(nonSeparatedDirectory, filename)
         file.save(filepath)
 
         try:
-            demucs.separate.main(["--mp3", "--two-stems", "vocals", nonSeparatedDirectory + filename])
-            vocals_path = os.path.join(separatedDirectory, "vocals.mp3")
-            instrumental_path = os.path.join(separatedDirectory, "no_vocals.mp3")
+            input_file = os.path.join(nonSeparatedDirectory, filename)
+            demucs.separate.main(["--mp3", "--two-stems", "vocals", input_file])
+            vocals_path = os.path.join(full_separated_path, "vocals.mp3")
+            instrumental_path = os.path.join(full_separated_path, "no_vocals.mp3")
 
             if os.path.isfile(vocals_path): #and os.path.isfile(instrumental_path):
                 zip_filename = "tracks.zip"
@@ -47,4 +49,4 @@ def separateToTwoStems():  # put application's code here
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0',port=5000)

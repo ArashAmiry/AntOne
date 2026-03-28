@@ -26,7 +26,7 @@ function MusicInput() {
       setIsAudioProcessed(false);
       setProgress((prevState) => { return { ...prevState, started: true } });
 
-      axios.post('http://127.0.0.1:5000/separation', formData, {
+      axios.post('http://localhost:5000/separation', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
