@@ -1,0 +1,13 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+# Exkludera även de tunga ljudfilerna om du inte vill ha med dem i imagen
+separated/
+non-seperated/
